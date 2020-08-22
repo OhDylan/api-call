@@ -2,9 +2,13 @@
 
 This is a beginner-friendly demonstration for calling an external API for your web app.
 
+The API that we are using in this demonstration is from https://reqres.in/. You do not need an API key, or anything else to perform a GET request, pretty handy for demonstration purpose.
+![alt text](https://github.com/OhDylan/api-call/blob/master/assets/reqres.png?raw=true)
+
 Let me first show you what are we trying to do in this demonstration.
-Two buttons on the page "User Page 1" and "User Page 2".
-When user clicks on "User Page 1", we are fetching and rendering the results of page 1 from external API, otherwise for "User Page 2".
+
+We have two buttons on the page "User Page 1" and "User Page 2".
+When user clicks on "User Page 1", we are fetching and rendering the user results of page 1 from external API, otherwise for "User Page 2".
 
 ![alt text](https://github.com/OhDylan/api-call/blob/master/assets/page1.png?raw=true)
 *When "User Page 1" clicked.*
@@ -13,7 +17,6 @@ When user clicks on "User Page 1", we are fetching and rendering the results of 
 *When "User Page 2" clicked.*
 
 We are going to use **axios**, a third party library which provides extremely convenient setup to perform API calls.
-
 
 Some of the benefits that I realised from axios as compared to fetch api is that:
 
@@ -24,10 +27,6 @@ Some of the benefits that I realised from axios as compared to fetch api is that
 3. You do not have to put in "headers" : "application/json", I know it's not a big deal, but yea.
 
 4. You do not have to parse the results to json for axios (which fetch API only returns you Readable Stream).
-
-The API that we are using in this demonstration is from https://reqres.in/. You do not need an API key, or anything else to perform a GET request, pretty handy for demonstration purpose.
-![alt text](https://github.com/OhDylan/api-call/blob/master/assets/reqres.png?raw=true)
-
 
 So in this little demonstration, we are not going to discuss about the cosmetics of the website, but more towards the API call. 
 
