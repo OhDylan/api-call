@@ -16,7 +16,7 @@ Some of the benefits that I realised from axios as compared to fetch api is that
 
 
 So in this little demonstration, we are not going to discuss about the cosmetic of the website, but more towards the API call. So here we have an index.html file:
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
