@@ -14,6 +14,8 @@ Some of the benefits that I realised from axios as compared to fetch api is that
 
 4. You do not have to parse the results to json for axios (which fetch API only returns you Readable Stream).
 
+The API that we are using in this demonstration is from https://reqres.in/. You do not need an API key, or anything else to perform a GET request, pretty handy for demonstration purpose.
+
 
 So in this little demonstration, we are not going to discuss about the cosmetic of the website, but more towards the API call. So here we have an index.html file:
 ```html
@@ -41,3 +43,4 @@ So in this little demonstration, we are not going to discuss about the cosmetic 
 </body>
 </html>
 ```
+So in this page we have two buttons: "User Page 1" and "User Page 2".
