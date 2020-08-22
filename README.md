@@ -3,7 +3,14 @@
 This is a beginner-friendly demonstration for calling an external API for your web app.
 
 Let me first show you what are we trying to do in this demonstration.
+Two buttons on the page "User Page 1" and "User Page 2".
+When user clicks on "User Page 1", we are fetching and rendering the results of page 1 from external API, otherwise for "User Page 2".
 
+![alt text](https://github.com/OhDylan/api-call/blob/master/assets/page1.png?raw=true)
+*When "User Page 1" clicked.*
+
+![alt text](https://github.com/OhDylan/api-call/blob/master/assets/page2.png?raw=true)
+*When "User Page 2" clicked.*
 
 We are going to use **axios**, a third party library which provides extremely convenient setup to perform API calls.
 
