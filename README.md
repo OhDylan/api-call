@@ -1,6 +1,10 @@
 ## Simple demonstration for an API call
 
 This is a beginner-friendly demonstration for calling an external API for your web app.
+
+Let me first show you what are we trying to do in this demonstration.
+
+
 We are going to use **axios**, a third party library which provides extremely convenient setup to perform API calls.
 
 
@@ -118,10 +122,6 @@ After getting the returned data, we are going to check if there are currently ch
 We loop through the data and grab the nested information that we want: avatar url, email and name in this case. You can always refer to API documentation to understand how does the data returned looks like, so that you know how to access them.
 
 Finally, we create the child nodes and append them to the parent nodes respectively. I am using Bootstrap card component, therefore I stick to that structure:
-                                                                           card
-                                                   :arrow_lower_left:                 :arrow_lower_right:
-                                              card image (user avatar)                                              card body
-                                                                                 :arrow_lower_left:                 :arrow_lower_right:
-                                                                             card title (user name)                               card description (user email)
+card -> card image and card body(card title and card description)
 
 Please let me know if I can improve this demonstration or explain more in-depth towards certain things. :smiley:
