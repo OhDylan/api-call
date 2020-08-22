@@ -119,7 +119,7 @@ const renderUsers = async (n) => {
     }
 }
 ```
-Those two buttons that we clicked ("User Page 1" and "User Page 2") are listening to onclick event and fire renderUsers function. While calling the function, parameter n is also passed into the function which will be used later. I hardcoded 1 and 2 for the parameter only for demonstration purpose.
+Those two buttons that we clicked ("User Page 1" and "User Page 2") are listening to onclick event and fire renderUsers function. While calling the function, parameter *n* is also passed into the function which will be used later. I hardcoded 1 and 2 for the parameter only for demonstration purpose.
 
 So when the renderUsers function gets called, it will fire getData function and pass in the parameter (page number) and this parameter (1 or 2) is passed into the API url that we want to call. So if we pass in 1, it will get the results from page 1 and otherwise.
 
