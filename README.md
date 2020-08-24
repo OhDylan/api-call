@@ -1,4 +1,5 @@
-## Simple demonstration for an API call
+
+++++++++++## Simple demonstration for an API call
 
 This is a beginner-friendly demonstration for calling an external API for your web app.
 
@@ -57,6 +58,15 @@ So here we have an index.html file:
         <span><button onclick="renderUsers('2')" type="button" class="btn btn-light">User Page 2</button></span>
     </div>
     <div class = "card_container"></div>
+    <template id="tmplt">
+        <div class="card">
+            <img class="card-img-top">
+            <div class="card-body">
+                <h3 class="card-title"></h3>
+                <p class="card-text"></p>
+            </div>
+        </div>
+    </template>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="apiCall.js"></script>
 </body>
@@ -71,8 +81,7 @@ For design wise you may checkout the style.css, I just did a simple one.
 
 For apiCall.js, I wrote three functions: 
 1. getData :arrow_forward: call API using axios and return the data.
-2. clearAllChildNodes :arrow_forward: just to clear off the card container before it renders new one when the button is clicked again (:question: how do you guys handle this in a better way by using vanilla Javascript?).
-3. renderUsers :arrow_forward: to render out the user cards in cards container.
+2. renderUsers :arrow_forward: to render out the user cards in cards container.
 
 Here is the apiCall.js:
 ```javascript
@@ -86,36 +95,23 @@ const getData = (n) => {
     });
 };
 
-const clearAllChildNodes = (node) => {
-    while(node.firstChild){
-        node.removeChild(node.firstChild);
-    }
-};
-
 const renderUsers = async (n) => {
     const data = await getData(n);
-    const resultRender = document.querySelector(".card_container");
-    clearAllChildNodes(resultRender);
-    for(const user of data){
-        const card = document.createElement("div");
-        const userCardBody = document.createElement("div");
-        const userAvatar = document.createElement("img");
-        const userName = document.createElement("h3");
-        const userEmail = document.createElement("p");
-        card.className = "card";
-        userCardBody.className = "card-body";
-        userAvatar.className = "card-img-top";
-        userName.className = "card-title";
-        userEmail.className = "card-text";
-        
-        const name = user.first_name + user.last_name;
-        userAvatar.src =user.avatar;
-        userAvatar.alt = name;
-        userName.innerHTML = name;
-        userEmail.innerHTML =user.email;
-        userCardBody.append(userName, userEmail);
-        card.append(userAvatar, userCardBody);
-        resultRender.append(card);
+    const container = document.querySelector(".card_container");
+    container.innerHTML = "";
+    const template = document.getElementById("tmplt");  
+    for(let i = 0; i < data.length; i++){
+        let user = data[i];
+        let clone = template.content.cloneNode(true);
+        const username = user.first_name + user.last_name;
+        let avatar = clone.querySelector(".card-img-top");
+        avatar.src = user.avatar;
+        avatar.alt = username;
+        let name = clone.querySelector(".card-title");
+        name.innerHTML = username;
+        let email = clone.querySelector(".card-text");
+        email.innerHTML = user.email;
+        container.appendChild(clone);
     }
 }
 ```
@@ -123,11 +119,10 @@ Those two buttons that we clicked ("User Page 1" and "User Page 2") are listenin
 
 So when the renderUsers function gets called, it will fire getData function and pass in the parameter (page number) and this parameter (1 or 2) is passed into the API url that we want to call. So if we pass in 1, it will get the results from page 1 and otherwise.
 
-After getting the returned data, we are going to check if there are currently child nodes inside our card container (which is the div element with class "card_container"). If yes, it will remove the child nodes before proceeding to render the data.
+After getting the returned data, we are going to clear the inner html of card container in order to render new cards.
 
 We loop through the data and grab the nested information that we want: avatar url, email and name in this case. You can always refer to API documentation to understand how does the data returned looks like, so that you know how to access them.
 
-Finally, we create the child nodes and append them to the parent nodes respectively. I am using Bootstrap card component, therefore I stick to that structure:
-card -> card image and card body(card title and card description)
+Finally, we input the returned information to their respective nodes and append the whole clone body to card container.
 
 Please let me know if I can improve this demonstration or explain more in-depth towards certain things. :smiley:
