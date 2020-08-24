@@ -16,27 +16,20 @@ const clearAllChildNodes = (node) => {
 
 const renderUsers = async (n) => {
     const data = await getData(n);
-    const resultRender = document.querySelector(".card_container");
-    clearAllChildNodes(resultRender);
-    for(const user of data){
-        const card = document.createElement("div");
-        const userCardBody = document.createElement("div");
-        const userAvatar = document.createElement("img");
-        const userName = document.createElement("h3");
-        const userEmail = document.createElement("p");
-        card.className = "card";
-        userCardBody.className = "card-body";
-        userAvatar.className = "card-img-top";
-        userName.className = "card-title";
-        userEmail.className = "card-text";
-        
-        const name = user.first_name + user.last_name;
-        userAvatar.src =user.avatar;
-        userAvatar.alt = name;
-        userName.innerHTML = name;
-        userEmail.innerHTML =user.email;
-        userCardBody.append(userName, userEmail);
-        card.append(userAvatar, userCardBody);
-        resultRender.append(card);
+    const container = document.querySelector(".card_container");
+    container.innerHTML = "";
+    const template = document.getElementById("tmplt");  
+    for(let i = 0; i < data.length; i++){
+        let user = data[i];
+        let clone = template.content.cloneNode(true);
+        const username = user.first_name + user.last_name;
+        let avatar = clone.querySelector(".card-img-top");
+        avatar.src = user.avatar;
+        avatar.alt = username;
+        let name = clone.querySelector(".card-title");
+        name.innerHTML = username;
+        let email = clone.querySelector(".card-text");
+        email.innerHTML = user.email;
+        container.appendChild(clone);
     }
 }
