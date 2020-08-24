@@ -8,12 +8,6 @@ const getData = (n) => {
     });
 };
 
-const clearAllChildNodes = (node) => {
-    while(node.firstChild){
-        node.removeChild(node.firstChild);
-    }
-};
-
 const renderUsers = async (n) => {
     const data = await getData(n);
     const container = document.querySelector(".card_container");
