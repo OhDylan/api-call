@@ -1,5 +1,5 @@
 
-++++++++++## Simple demonstration for an API call
+## Simple demonstration for an API call
 
 This is a beginner-friendly demonstration for calling an external API for your web app.
 
